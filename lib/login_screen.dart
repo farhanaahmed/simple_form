@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:forms/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -58,12 +59,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   // print(_emailController.text);
                   // print(_passwordController.text);
+                  FocusManager.instance.primaryFocus?.unfocus();
                   if (_emailController.text == _email &&
                       _passwordController.text == _password) {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => HomeScreen()));
                   } else {
-                    print("Invalid email or password!");
+                    //print("Invalid email or password!");
+                    Fluttertoast.showToast(
+                        msg: "Invalid email or password!",
+                        toastLength: Toast.LENGTH_SHORT,
+                        // gravity: ToastGravity.CENTER,
+                        // timeInSecForIosWeb: 1,
+                        // backgroundColor: Colors.red,
+                        // textColor: Colors.white,
+                        // fontSize: 16.0
+                    );
                   }
                 },
                 color: Colors.blue,
